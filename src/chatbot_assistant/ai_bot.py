@@ -12,7 +12,7 @@ class Aibot:
         :param headers: A dict of headers to use for HTTP requests.
         """
         self.client = client  # Injected dependency
-        #self.headers = headers
+        #self.client = OpenAIClient(OPENAI_AUTH)  # Pass the OpenAI object
         self.system_prompt =CHATBOT_SYSTEM_PROMPT  # Use the global system prompt
  
 
