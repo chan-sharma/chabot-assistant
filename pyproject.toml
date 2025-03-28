@@ -1,0 +1,33 @@
+[project]
+name = "ai-assistant"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Chandan Sharma", email = "you@example.com"}
+]
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "openai (>=1.68.2,<2.0.0)",
+    "python-dotenv (>=1.1.0,<2.0.0)",
+    "requests (>=2.32.3,<3.0.0)",
+    "beautifulsoup4 (>=4.13.3,<5.0.0)",
+    "markdown (>=3.7,<4.0)",
+    "streamlit (>=1.44.0,<2.0.0)",
+    "gradio (>=5.23.1,<6.0.0)"
+]
+
+[tool.poetry]
+packages = [{include = "chatbot_assistant", from = "src"}]
+
+[tool.poetry.group.dev.dependencies]
+jupyterlab = "*"
+ipykernel = "*"
+black = "*"
+watchdog = "*"
+tqdm = "*"
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+

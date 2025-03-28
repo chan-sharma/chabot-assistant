@@ -1,0 +1,9 @@
+# requirements.txt
+
+openai>=1.0.0
+python-dotenv
+beautifulsoup4
+Markdown
+requests
+streamlit
+gradio
