@@ -1,52 +1,61 @@
-# Summariser Agent
+# 🤖 Chatbot Assistant
 
-An AI-powered website summarisation tool that leverages OpenAI's language models to extract and summarise content from any website. The project is built with a modular architecture that separates configuration, website scraping, and summarisation logic, making it easily extendable for future integrations (such as weather data, additional LLMs, etc.).
+A modular, production-ready AI chatbot framework built with [OpenAI](https://platform.openai.com/), `Gradio`, and clean architecture principles.
 
-## Table of Contents
+Supports real-time streaming, dependency injection, and is designed for easy extension to other LLM providers (e.g., Claude, Mistral, etc.).
 
-- [Overview](#overview)
-- [Project Structure](#project-structure)
-- [Installation](#installation)
-- [Configuration](#configuration)
-- [Usage](#usage)
-- [Extending the Project](#extending-the-project)
-- [License](#license)
+---
 
-## Overview
+## 🧱 Features
 
-The Summariser Agent is designed to:
+- ✅ Real-time streaming chat using OpenAI GPT models
+- ✅ Clean architecture with proper dependency injection (DI)
+- ✅ Easily swappable LLM clients
+- ✅ Modular service classes (`OpenAIClient`, `Aibot`, `AIAgent`)
+- ✅ Markdown-formatted responses
+- ✅ Testable with mocked clients
+- ✅ Minimal frontend via Gradio
 
-- **Scrape Websites**: Use BeautifulSoup to fetch and clean HTML content.
-- **Generate Summaries**: Leverage OpenAI's language models to summarise website content.
-- **Orchestrate Services**: Use an agent to route tasks between different business logic modules.
+---
 
-By isolating functionality into dedicated modules and packages, the project adheres to best practices in modularity, scalability, and maintainability.
+## 🚀 Getting Started
 
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/your-org/chatbot-assistant.git
+cd chatbot-assistant 
+```
+### 2. Setting up the environment
+```bash
+# Using Poetry
+poetry install
+
+# OR using pip
+pip install -r requirements.txt
+```
+### 3. Add your OpenAI API key
+```bash
+export OPENAI_API_KEY="your-api-key-here"
+```
 ## Project Structure
+```bash
+chatbot_assistant/
+├── app.py                         # Gradio frontend entry point
+├── agent_orchestrator.py         # Orchestrates the AI bot
+├── ai_bot.py                     # Handles interaction with OpenAIClient
+├── utils/
+│   ├── open_ai_client.py         # Streaming wrapper for OpenAI Chat API
+│   ├── config.py                 # Centralized configuration
+│   └── system_prompt_global.py   # Shared system prompts
+tests/
+├── test_aibot.py                 # Unit tests for Aibot logic
+├── test_open_ai_client.py        # Unit tests with mocked LLM
+.env                              # Optional – for API keys
+README.md                         # You're here
 
-```bash
-my_project/
-├── ai_assistant/
-│   ├── agent.py          # Orchestrator that delegates tasks (e.g., summarisation)
-│   └── summariser_agent/ # Dedicated package for summarisation logic
-│       ├── __init__.py
-│       ├── config.py     # Loads env vars, validates API key, and creates shared objects
-│       ├── website.py    # Website scraper using BeautifulSoup
-│       ├── utils.py      # Utility functions (e.g., get_system_prompt)
-│       └── summariser.py # Summariser that calls the LLM for generating summaries
-├── src/
-│   └── main.py           # Entry point for CLI usage of the agent
-├── .env                  # Environment variables file (API keys, etc.)
-└── requirements.txt      # Python dependencies
 ```
-# Installation
-Clone the repository:
+## Running the APP
 ```bash
-git clone https://github.com/yourusername/summariser-agent.git
-cd summariser-agent
-```
-Create and activate a virtual environment:
-```bash
-git clone https://github.com/yourusername/summariser-agent.git
-cd summariser-agent
+python app.py
 ```
